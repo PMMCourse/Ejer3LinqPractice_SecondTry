@@ -47,7 +47,6 @@ namespace Ejer3LinqPractice_SecondTry
          //a la hora de recibir las variables de longitud y latitud.
          //Latitude":52.1894953
          //"Longitude":5.3961917
-
             double latitud=0, longitud=0;
             bool valido=true;
             do
