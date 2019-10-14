@@ -14,14 +14,15 @@ namespace Ejer3LinqPractice_SecondTry
 
         public string Model { get; set; }
 
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         public string Color { get; set; }
 
+        public Location location { get; set; }
         public struct Location
         {
-            public double Latitude { get; set; }
-            public double Longitude { get; set; }
+            public double? Latitude { get; set; }
+            public double? Longitude { get; set; }
         }
     }
 }
