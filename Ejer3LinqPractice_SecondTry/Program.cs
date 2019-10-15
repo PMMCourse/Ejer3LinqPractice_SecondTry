@@ -16,9 +16,6 @@ namespace Ejer3LinqPractice_SecondTry
 
             List<Cars> coches = JsonConvert.DeserializeObject<List<Cars>>(archivoJ); //Creamos una lista con el json.
 
-            Ejer5(coches);
-
-            Console.ReadKey();
         }
 
         static void Ejer4(List<Cars> lc)
@@ -42,7 +39,7 @@ namespace Ejer3LinqPractice_SecondTry
             Console.WriteLine("Introduce una longitud: ");
             lon = double.Parse(Console.ReadLine());
 
-            var query = lc.Where(x => x.Latitude == lat && x.Longitude == lon).Any(y => y.Color == "Turquoise");
+            var query = lc.Where(x => x.Loc.Latitude == lat && x.Loc.Latitude == lon).Any(y => y.Color == "Turquoise");
 
             if (query)
             {
@@ -52,6 +49,37 @@ namespace Ejer3LinqPractice_SecondTry
             {
                 Console.WriteLine("No hay coches");
             }
+        }
+
+
+        static void Ejer7(List<Cars> lc)
+        {
+            var query = lc.Where(x => x.Loc.Latitude == null && x.Loc.Longitude == null)
+                .Select(y => new CocheEspecifico { Maker = y.Maker, Model = y.Model });
+
+            foreach(var i in query)
+            {
+                Console.WriteLine($"Fabricante: {i.Maker} Fabricante: {i.Model}");
+            }
+        }
+
+        static void Ejer10(List<Cars> lc)
+        {
+            var cpf = lc.GroupBy(x => x.Maker);
+
+            foreach(var i in cpf)
+            {
+                Console.WriteLine($"Fabricante: {i.Key}");
+
+                foreach(var j in i)
+                {       
+                    if(j.Color != null) //SI NO TIENE, NO LO MUESTRO.
+                    {
+                        Console.WriteLine($"Color: {j.Color}");
+                    }                 
+                }
+            }
+
         }
     }
 }

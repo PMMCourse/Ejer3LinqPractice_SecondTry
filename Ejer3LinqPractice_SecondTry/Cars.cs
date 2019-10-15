@@ -12,8 +12,15 @@ namespace Ejer3LinqPractice_SecondTry
         public string Model { get; set; }
         public int? Year { get; set; }
         public string Color { get; set; }
-        //public double? Location { get; set; }
+        public Location Loc { get; set; }
+
+        //CREAR TIPO STRUCT PARA EL JSON:
+        public struct Location
+        {
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
+
+        }
+
     }
 }
