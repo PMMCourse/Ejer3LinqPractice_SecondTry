@@ -50,5 +50,14 @@ namespace Ejer3LinqPractice_SecondTry
                 }
             //}
         }
+
+        public static void Ejer7(List<Car> coche)
+        {
+            var ej7 = coche.Where(x => x.location.Latitude==null && x.location.Longitude==null).Select(j=> new busquedaCoche {Modelo=j.Model,Marca=j.Maker });
+            foreach (var a in ej7)
+            {
+                Console.WriteLine(messages.mFabricante + a.Marca + messages.mModelo + a.Modelo);
+            }
+        }
     }
 }

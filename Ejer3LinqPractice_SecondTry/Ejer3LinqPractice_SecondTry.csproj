@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="busquedaCoche.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="messages.Designer.cs">
       <AutoGen>True</AutoGen>
