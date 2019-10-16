@@ -12,15 +12,18 @@ namespace Ejer3LinqPractice_SecondTry
     {
         static void Main(string[] args)
         {
-            var archivoJ = File.ReadAllText("Cars.json"); //Cargamos el archivo.
+            var archivoJ = File.ReadAllText("Cars.json"); //Cargamos el archivo.      
 
             List<Cars> coches = JsonConvert.DeserializeObject<List<Cars>>(archivoJ); //Creamos una lista con el json.
 
+            Ejer4(coches);
+
+            Console.ReadKey();
         }
 
         static void Ejer4(List<Cars> lc)
         {
-            var fm = lc.Where(x => x.Color == "Fuscia").Select(y => new { Fabricante = y.Maker, Modelo = y.Model });
+            var fm = lc.Where(x => x.Color == "Fuscia");
 
             foreach(var i in fm)
             {
@@ -39,7 +42,7 @@ namespace Ejer3LinqPractice_SecondTry
             Console.WriteLine("Introduce una longitud: ");
             lon = double.Parse(Console.ReadLine());
 
-            var query = lc.Where(x => x.Loc.Latitude == lat && x.Loc.Latitude == lon).Any(y => y.Color == "Turquoise");
+            var query = lc.Where(x => x.Loc.Latitud == lat && x.Loc.Latitud == lon).Any(y => y.Color == "Turquoise");
 
             if (query)
             {
@@ -54,18 +57,18 @@ namespace Ejer3LinqPractice_SecondTry
 
         static void Ejer7(List<Cars> lc)
         {
-            var query = lc.Where(x => x.Loc.Latitude == null && x.Loc.Longitude == null)
-                .Select(y => new CocheEspecifico { Maker = y.Maker, Model = y.Model });
+            var query = lc.Where(x => x.Loc.Latitud == null && x.Loc.Longitud == null)
+                .Select(y => new CocheEspecifico { Fabricante = y.Fabricante, Modelo = y.Modelo });
 
             foreach(var i in query)
             {
-                Console.WriteLine($"Fabricante: {i.Maker} Fabricante: {i.Model}");
+                Console.WriteLine($"Fabricante: {i.Fabricante} Fabricante: {i.Modelo}");
             }
         }
 
         static void Ejer10(List<Cars> lc)
         {
-            var cpf = lc.GroupBy(x => x.Maker);
+            var cpf = lc.GroupBy(x => x.Fabricante);
 
             foreach(var i in cpf)
             {
