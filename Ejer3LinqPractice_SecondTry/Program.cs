@@ -62,7 +62,7 @@ namespace Ejer3LinqPractice_SecondTry
 
             foreach(var i in query)
             {
-                Console.WriteLine($"Fabricante: {i.Fabricante} Fabricante: {i.Modelo}");
+                Console.WriteLine($"Fabricante: {i.Fabricante} Modelo: {i.Modelo}");
             }
         }
 
